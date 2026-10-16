@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0B0614">
+
+    <title>Rania | Portfolio</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+:root {
+    --black: #140A12;
+    --dark: #21101F;
+    --card: #30172D;
+    --red: #EC4899;
+    --red-dark: #BE185D;
+    --gold: #F9A8D4;
+    --gold-light: #FCE7F3;
+    --white: #FFFFFF;
+    --gray: #D6B8CC;
+}
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--red), var(--gold));
+            border-radius: 10px;
+        }
+
+        .text-primary,
+        .text-info {
+            color: var(--gold) !important;
+        }
+
+        .bg-primary,
+        .bg-info {
+            background-color: var(--red) !important;
+        }
+
+        .bg-dark {
+            background-color: var(--black) !important;
+        }
+
+        .bg-light,
+        .bg-white {
+            background-color: var(--dark) !important;
+        }
+
+        .text-dark {
+            color: var(--white) !important;
+        }
+
+        .text-secondary,
+        .text-white-50 {
+            color: var(--gray) !important;
+        }
+
+        .btn-primary,
+        .btn-info {
+            background: linear-gradient(135deg, #A855F7, #6D28D9);
+            border: 1px solid var(--red);
+            color: var(--white) !important;
+        }
+
+        .btn-primary:hover,
+        .btn-info:hover {
+            background: linear-gradient(135deg, #E9D5FF, #C084FC);
+            border-color: var(--gold-light);
+            color: var(--black) !important;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px #A855F750;
+        }
+
+        .btn-outline-primary {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-light:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .badge {
+            letter-spacing: 0.4px;
+        }
+
+        .badge.bg-secondary {
+            background: var(--card) !important;
+            color: var(--gold) !important;
+            border: 1px solid #C084FC50;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #0B0614F2 !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #C084FC30;
+            padding: 16px 0;
+        }
+
+        .navbar-brand {
+            font-size: 23px;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--red) !important;
+        }
+
+        .nav-link {
+            color: #DDD !important;
+            margin: 0 7px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 3px;
+            left: 8px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: calc(100% - 16px);
+        }
+
+        /* Hero */
+        #home {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 10% 20%, #A855F730, transparent 40%),
+                radial-gradient(ellipse at 90% 80%, #C084FC25, transparent 35%),
+                var(--black) !important;
+        }
+
+        #home::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            top: -120px;
+            right: -100px;
+            border: 1px solid #C084FC50;
+            border-radius: 50%;
+            box-shadow: 0 0 0 35px #C084FC10, 0 0 0 70px #A855F708;
+            animation: rotateCircle 20s linear infinite;
+            z-index: -1;
+        }
+
+        #home::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            bottom: -150px;
+            left: -70px;
+            border-radius: 50%;
+            background: #A855F730;
+            filter: blur(50px);
+            z-index: -1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 17px;
+            background: #C084FC18;
+            color: var(--gold-light);
+            border: 1px solid #C084FC70;
+            border-radius: 30px;
+            animation: fadeDown 0.8s ease both;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            animation: fadeUp 0.8s ease 0.15s both;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #A855F7, #E9D5FF, #C084FC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            color: var(--gold) !important;
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            line-height: 1.9;
+            animation: fadeUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            animation: fadeUp 0.8s ease 0.5s both;
+        }
+
+        .profile-image {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border: 4px solid var(--gold) !important;
+            outline: 1px solid #A855F780;
+            outline-offset: 9px;
+            box-shadow: 0 0 35px #C084FC40;
+            animation: floatImage 4s ease-in-out infinite;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .profile-image:hover {
+            box-shadow: 0 0 45px #A855F780;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65px;
+            height: 3px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            margin-top: 12px;
+        }
+
+        section:not(#home):not(#contact) {
+            background: var(--black);
+        }
+
+        #skills {
+            background: #120B1D !important;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            color: var(--white);
+            border: 1px solid #FFFFFF10 !important;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-9px);
+            border-color: #C084FC70 !important;
+            box-shadow: 0 15px 35px #00000050, 0 0 20px #C084FC18 !important;
+        }
+
+        .card-body {
+            background: transparent;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #6D28D9, #32134E) !important;
+            border-bottom: 1px solid #C084FC50;
+        }
+
+        .card i.display-6,
+        .card i.display-4 {
+            color: var(--gold) !important;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .card:hover i.display-6,
+        .card:hover i.display-4 {
+            color: var(--red) !important;
+            transform: scale(1.12);
+        }
+
+        .card .badge.bg-danger,
+        .card .badge.bg-success,
+        .card .badge.bg-dark,
+        .card .badge.bg-primary {
+            background: #A855F725 !important;
+            color: var(--gold-light) !important;
+            border: 1px solid #A855F760;
+        }
+
+        .card .badge.bg-info,
+        .card .badge.bg-warning {
+            background: #C084FC20 !important;
+            color: var(--gold-light) !important;
+            border: 1px solid #C084FC50;
+        }
+
+        .project-image {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .project-image {
+            transform: scale(1.04);
+        }
+
+        .skill-card {
+            position: relative;
+        }
+
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+            transition: width 0.4s ease;
+        }
+
+        .skill-card:hover::before {
+            width: 100%;
+        }
+
+        /* Contact */
+        #contact {
+            background:
+                radial-gradient(ellipse at bottom right, #A855F725, transparent 45%),
+                #120B1D !important;
+        }
+
+        #contact .card {
+            background: #1B1228;
+        }
+
+        .form-label {
+            color: var(--gold-light) !important;
+        }
+
+        .form-control {
+            background: #120B1D;
+            color: var(--white);
+            border: 1px solid #FFFFFF20;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .form-control::placeholder {
+            color: #A99AB9;
+        }
+
+        .form-control:focus {
+            background: #120B1D;
+            color: var(--white);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 0.2rem #C084FC25;
+        }
+
+        /* Footer */
+        footer {
+            background: #07040D !important;
+            border-top: 1px solid #C084FC30;
+        }
+
+        footer h5 {
+            color: var(--gold);
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatImage {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes rotateCircle {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2.6rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .navbar-nav {
+                padding-top: 12px;
+            }
+
+            .nav-link {
+                padding: 10px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .reveal-left {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <span>Rania</span> Portfolio
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <div class="navbar-nav ms-auto">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="text-white py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-md-7 text-center text-md-start">
+                    <span class="hero-badge mb-3">
+                        <i class="bi bi-stars me-2"></i>
+                        Welcome To My Portfolio
+                    </span>
+
+                    <h1 class="hero-title fw-bold mt-3">
+                        Hi, I'm <span class="gradient-text">Rania</span>
+                    </h1>
+
+                    <h2 class="h3 hero-subtitle mb-3">Web Developer</h2>
+
+                    <p class="lead hero-description mb-4">
+                        I build modern, responsive and user-friendly websites
+                        using HTML, CSS, Bootstrap and JavaScript.
+                        Turning creative ideas into digital experiences.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary btn-lg me-2 mb-2">
+                            <i class="bi bi-briefcase me-2"></i>My Projects
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline-light btn-lg mb-2">
+                            <i class="bi bi-chat-dots me-2"></i>Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 text-center mt-5 mt-md-0">
+                    <img src="myy.jpeg" alt="Rania Profile" width="240" height="240" class="profile-image rounded-circle">
+
+                    <div class="mt-4">
+                        <span class="badge bg-secondary p-2">
+                            <i class="bi bi-code-slash me-2"></i>
+                            Creative Developer
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5 reveal">
+                <h2 class="section-title">
+                    About <span class="gradient-text">Me</span>
+                </h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-md-6 reveal-left">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="display-6 mb-3">
+                                <i class="bi bi-person-workspace"></i>
+                            </div>
+                            <h4 class="fw-bold">Who Am I?</h4>
+                            <p class="text-secondary">
+                                I am a passionate web developer who enjoys
+                                learning new technologies and creating
+                                useful digital experiences.
+                            </p>
+                            <p class="text-secondary mb-0">
+                                My goal is to build clean, responsive
+                                and easy-to-use websites.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 reveal">
+                    <div class="card h-100">
+                        <div class="card-header p-3">
+                            <h5 class="mb-0">
+                                <i class="bi bi-person-lines-fill me-2"></i>
+                                Personal Information
+                            </h5>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <p>
+                                <i class="bi bi-person-fill text-primary me-2"></i>
+                                <strong>Name:</strong> Rania
+                            </p>
+                            <p>
+                                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                <strong>Email:</strong> Rania@gmail.com
+                            </p>
+                            <p>
+                                <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                <strong>Location:</strong> Egypt
+                            </p>
+                            <p class="mb-0">
+                                <i class="bi bi-code-slash text-primary me-2"></i>
+                                <strong>Role:</strong> Web Developer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5 reveal">
+                <h2 class="section-title">
+                    My <span class="gradient-text">Skills</span>
+                </h2>
+                <p class="section-subtitle">Technologies I use to build websites</p>
+            </div>
+
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3 reveal">
+                    <div class="card skill-card h-100">
+                        <div class="card-body p-4">
+                            <i class="bi bi-filetype-html display-4"></i>
+                            <h5 class="fw-bold mt-3">HTML</h5>
+                            <span class="badge bg-danger">Structure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 reveal">
+                    <div class="card skill-card h-100">
+                        <div class="card-body p-4">
+                            <i class="bi bi-filetype-css display-4"></i>
+                            <h5 class="fw-bold mt-3">CSS</h5>
+                            <span class="badge bg-primary">Styling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 reveal">
+                    <div class="card skill-card h-100">
+                        <div class="card-body p-4">
+                            <i class="bi bi-bootstrap-fill display-4"></i>
+                            <h5 class="fw-bold mt-3">Bootstrap</h5>
+                            <span class="badge bg-info">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 reveal">
+                    <div class="card skill-card h-100">
+                        <div class="card-body p-4">
+                            <i class="bi bi-filetype-js display-4"></i>
+                            <h5 class="fw-bold mt-3">JavaScript</h5>
+                            <span class="badge bg-warning">Interactive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5 reveal">
+                <h2 class="section-title">
+                    My <span class="gradient-text">Projects</span>
+                </h2>
+                <p class="section-subtitle">Some projects I have worked on</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="card h-100">
+                        <img src="https://placehold.co/600x400/1B1228/C084FC?text=Student+System"
+                            class="card-img-top project-image" alt="Student Management System">
+
+                        <div class="card-body p-4">
+                            <span class="badge bg-primary mb-2">Management</span>
+                            <h5 class="fw-bold">Student System</h5>
+                            <p class="text-secondary">
+                                A simple system for managing student records.
+                            </p>
+                            <a href="#contact" class="btn btn-outline-primary">
+                                View Project <i class="bi bi-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 reveal">
+                    <div class="card h-100">
+                        <img src="https://placehold.co/600x400/1B1228/A855F7?text=My+Website"
+                            class="card-img-top project-image" alt="Personal Website">
+
+                        <div class="card-body p-4">
+                            <span class="badge bg-dark mb-2">Portfolio</span>
+                            <h5 class="fw-bold">Personal Website</h5>
+                            <p class="text-secondary">
+                                A personal website to introduce skills and work.
+                            </p>
+                            <a href="#contact" class="btn btn-outline-primary">
+                                View Project <i class="bi bi-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 reveal">
+                    <div class="card h-100">
+                        <img src="https://placehold.co/600x400/1B1228/E9D5FF?text=Online+Store"
+                            class="card-img-top project-image" alt="Online Store">
+
+                        <div class="card-body p-4">
+                            <span class="badge bg-success mb-2">E-Commerce</span>
+                            <h5 class="fw-bold">Online Store</h5>
+                            <p class="text-secondary">
+                                A simple online store with product cards.
+                            </p>
+                            <a href="#contact" class="btn btn-outline-primary">
+                                View Project <i class="bi bi-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5 reveal">
+                <h2 class="section-title">
+                    Contact <span class="gradient-text">Me</span>
+                </h2>
+                <p class="section-subtitle">Have a project in mind? Let's talk.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-6 reveal">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" class="form-control mb-3" placeholder="Enter your name"
+                                    required>
+
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" id="email" class="form-control mb-3" placeholder="name@example.com"
+                                    required>
+
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea id="message" class="form-control mb-3" rows="4"
+                                    placeholder="Write your message" required></textarea>
+
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="bi bi-send me-2"></i>Send Message
+                                </button>
+
+                                <p id="formMessage" class="text-secondary text-center mt-3 mb-0" aria-live="polite"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-white text-center py-4">
+        <div class="container">
+            <h5 class="fw-bold">Rania Portfolio</h5>
+
+            <p class="text-white-50 mb-3">
+                Building ideas into websites.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://github.com/Rania20055" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline-primary rounded-circle" aria-label="GitHub">
+                    <i class="bi bi-github"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/Rania-hamdy-1322632b1/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline-primary rounded-circle" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+
+            <p class="mb-0 text-white-50">
+                &copy; 2026 Rania. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+        // Reveal elements when they enter the screen
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            revealElements.forEach(element => observer.observe(element));
+        } else {
+            revealElements.forEach(element => element.classList.add('show'));
+        }
+
+        // Close mobile navigation after clicking a link
+        const navMenu = document.getElementById('navMenu');
+
+        document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('show') && window.bootstrap) {
+                    window.bootstrap.Collapse
+                        .getOrCreateInstance(navMenu)
+                        .hide();
+                }
+            });
+        });
+
+        // Contact form opens the visitor's email application
+        const contactEmail = 'Rania@gmail.com';
+
+        document.getElementById('contactForm').addEventListener('submit', event => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const formMessage = document.getElementById('formMessage');
+
+            if (!name || !email || !message) {
+                formMessage.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            const subject = encodeURIComponent('Portfolio Contact - ' + name);
+            const body = encodeURIComponent(
+                'Name: ' + name +
+                '\nEmail: ' + email +
+                '\n\nMessage:\n' + message
+            );
+
+            formMessage.textContent = 'Opening your email application...';
+
+            window.location.href =
+                `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+        });
+    </script>
+
+</body>
+
+</html>
